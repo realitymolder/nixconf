@@ -1,7 +1,7 @@
 {
-  flake.diskoConfigurations.hostMain = {
+  flake.diskoConfigurations.hostSamson = {
     disko.devices = {
-      disk.main = {
+      disk.samson = {
         device = "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_2TB_S736NU0W100374K";
         type = "disk";
         content = {

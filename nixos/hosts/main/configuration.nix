@@ -3,19 +3,19 @@
   self,
   ...
 }: {
-  flake.nixosConfigurations.main = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.samson = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      self.nixosModules.hostMain
+      self.nixosModules.hostSamson
     ];
   };
 
-  flake.nixosModules.hostMain = {pkgs, ...}: {
+  flake.nixosModules.hostSamson = {pkgs, ...}: {
     imports = [
       self.nixosModules.base
       self.nixosModules.general
       self.nixosModules.desktop
 
-      self.nixosModules.impermanence
+      # self.nixosModules.impermanence
 
       self.nixosModules.discord
       self.nixosModules.gimp
@@ -28,7 +28,7 @@
 
       # disko
       inputs.disko.nixosModules.disko
-      self.diskoConfigurations.hostMain
+      # self.diskoConfigurations.hostSamson
     ];
 
     programs.corectrl.enable = true;
@@ -52,7 +52,7 @@
     boot.plymouth.enable = true;
 
     networking = {
-      hostName = "main";
+      hostName = "samson";
       networkmanager.enable = true;
     };
 
