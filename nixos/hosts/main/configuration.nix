@@ -41,6 +41,7 @@
       loader.grub.enable = true;
       loader.grub.efiSupport = true;
       loader.grub.efiInstallAsRemovable = true;
+      loader.grub.device = "nodev"; # support for EFI boot
 
       supportedFilesystems.ntfs = true;
 
