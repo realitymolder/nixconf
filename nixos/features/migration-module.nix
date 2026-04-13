@@ -7,6 +7,7 @@
       pkgs.anytype
       pkgs.zed-editor
       pkgs.vscode
+      pkgs.signal-desktop
     ];
 
     # persistance.cache.directories = [
