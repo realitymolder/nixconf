@@ -17,7 +17,6 @@
       shell = self.packages.${pkgs.stdenv.hostPlatform.system}.environment;
 
       hashedPasswordFile = "/persist/passwd";
-      initialPassword = "12345";
     };
 
     # persistance.data.directories = [
