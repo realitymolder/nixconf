@@ -20,23 +20,23 @@
       initialPassword = "12345";
     };
 
-    persistance.data.directories = [
-      "nixconf"
+    # persistance.data.directories = [
+    #   "nixconf"
 
-      "Videos"
-      "Documents"
-      "Projects"
+    #   "Videos"
+    #   "Documents"
+    #   "Projects"
 
-      ".ssh"
-    ];
+    #   ".ssh"
+    # ];
 
     # todo: remove
-    persistance.cache.directories = [
-      ".local/share/zoxide"
-      ".local/share/direnv"
-      ".local/share/nvim"
-      ".local/share/fish"
-      ".config/nvim"
-    ];
+    # persistance.cache.directories = [
+    #   ".local/share/zoxide"
+    #   ".local/share/direnv"
+    #   ".local/share/nvim"
+    #   ".local/share/fish"
+    #   ".config/nvim"
+    # ];
   };
 }
