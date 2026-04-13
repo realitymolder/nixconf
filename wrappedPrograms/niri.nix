@@ -25,7 +25,7 @@
 
           keyboard = {
             xkb = {
-              layout = "us,ru,ua";
+              layout = "us,il";
               options = "grp:alt_shift_toggle,caps:escape";
             };
             repeat-rate = 40;
