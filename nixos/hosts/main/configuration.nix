@@ -20,14 +20,16 @@
       self.nixosModules.discord
       self.nixosModules.gimp
       self.nixosModules.telegram
-      self.nixosModules.youtube-music
+      self.nixosModules.migration-module
+      # self.nixosModules.youtube-music
 
       self.nixosModules.gaming
       # self.nixosModules.vr
-      self.nixosModules.powersave
+      # self.nixosModules.powersave
 
       # disko
-      inputs.disko.nixosModules.disko
+      inputs.disko.nixosModules.disko 
+      # fix a new disko config to represent samson disk etc.
       # self.diskoConfigurations.hostSamson
     ];
 
