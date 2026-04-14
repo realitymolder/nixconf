@@ -34,7 +34,7 @@
     networking.networkmanager.enable = true;
 
     programs.niri.enable = true;
-    programs.niri.package = self.packages.${pkgs.system}.niri;
+    programs.niri.package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
