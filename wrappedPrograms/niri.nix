@@ -60,6 +60,7 @@
           "Mod+Right".focus-column-right = null;
           "Mod+Up".focus-window-up = null;
           "Mod+Down".focus-window-down = null;
+          "Mod+Tab".open-overview = null;
 
           "Mod+Shift+H".move-column-left = null;
           "Mod+Shift+L".move-column-right = null;
