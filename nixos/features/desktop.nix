@@ -8,6 +8,7 @@
       self.nixosModules.pipewire
       self.nixosModules.firefox
       self.nixosModules.chromium
+      self.nixosModules.waterfox
     ];
 
     programs.niri.enable = true;

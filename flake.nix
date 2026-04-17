@@ -26,6 +26,8 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    waterfox-flake.url = "github:realitymolder/waterfox-flake";
   };
 
   # Import all .nix files from current directory except flake.nix recursively
