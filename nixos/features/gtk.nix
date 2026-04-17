@@ -17,6 +17,7 @@
 
     gtksettings = ''
       [Settings]
+      gtk-application-prefer-dark-theme = 1
       gtk-icon-theme-name = ${icon-theme-name}
       gtk-theme-name = ${theme-name}
     '';
