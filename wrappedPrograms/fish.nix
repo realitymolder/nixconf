@@ -29,6 +29,10 @@
         if type -q direnv
             direnv hook fish | source
         end
+
+        if type -q mise
+            mise activate fish | source
+        end
       '';
   in {
     packages.fish = inputs.wrappers.lib.wrapPackage {
@@ -36,6 +40,7 @@
       package = pkgs.fish;
       runtimeInputs = [
         pkgs.zoxide
+        pkgs.mise
       ];
       flags = {
         "-C" = "source ${fishConf}";
