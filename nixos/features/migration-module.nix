@@ -1,13 +1,17 @@
-{
-  flake.nixosModules.migration-module = {pkgs, ...}: {
+{self, ...}: {
+  flake.nixosModules.migration-module = {pkgs, ...}: let
+    selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
+  in {
     environment.systemPackages = [
       pkgs.spotify
       pkgs.opencode
-      pkgs.pi-coding-agent
+      selfpkgs.pi-coding-agent
       pkgs.anytype
       pkgs.zed-editor
       pkgs.vscode
       pkgs.signal-desktop
+      pkgs.devbox
+      pkgs.pixman
     ];
 
     # persistance.cache.directories = [
