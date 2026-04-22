@@ -28,7 +28,7 @@
       # self.nixosModules.powersave
 
       # disko
-      inputs.disko.nixosModules.disko 
+      inputs.disko.nixosModules.disko
       # fix a new disko config to represent samson disk etc.
       # self.diskoConfigurations.hostSamson
     ];
@@ -91,8 +91,23 @@
       android-tools
     ];
 
-    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    xdg.portal.enable = true;
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+      ];
+      config.niri = {
+        "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+        "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
+      };
+    };
+
+    environment.sessionVariables = {
+      XDG_CURRENT_DESKTOP = "niri";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "niri";
+    };
 
     hardware.graphics.enable = true;
 
