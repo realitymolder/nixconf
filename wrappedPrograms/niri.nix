@@ -198,6 +198,12 @@
     packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       imports = [self.wrappersModules.niri];
+      extraPackages = [
+        pkgs.xdg-desktop-portal-wlr
+        pkgs.pipewire
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-gtk
+      ];
     };
   };
 }
