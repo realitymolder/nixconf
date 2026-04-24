@@ -199,7 +199,7 @@
       inherit pkgs;
       imports = [self.wrappersModules.niri];
       extraPackages = [
-        pkgs.xdg-desktop-portal-wlr
+        # pkgs.xdg-desktop-portal-wlr
         pkgs.pipewire
         pkgs.xdg-desktop-portal-gnome
         pkgs.xdg-desktop-portal-gtk

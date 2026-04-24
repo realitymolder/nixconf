@@ -3,6 +3,7 @@
     selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}";
   in {
     imports = [
+      self.nixosModules.greeter
       self.nixosModules.gtk
 
       self.nixosModules.pipewire
