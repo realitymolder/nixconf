@@ -14,10 +14,7 @@
     programs.niri.enable = true;
     programs.niri.package = selfpkgs.niri;
 
-    environment.sessionVariables = {
-      ANDROID_HOME = "$HOME/Android/Sdk";
-      ANDROID_SDK_ROOT = "$HOME/Android/Sdk";
-    };
+    environment.sessionVariables = {};
 
     # preferences.autostart = [selfpkgs.quickshellWrapped];
     preferences.autostart = [selfpkgs.noctalia-shell];
@@ -26,7 +23,6 @@
       selfpkgs.terminal
       pkgs.pcmanfm
       selfpkgs.noctalia-shell
-      selfpkgs.flutter-dev
     ];
 
     fonts.packages = with pkgs; [

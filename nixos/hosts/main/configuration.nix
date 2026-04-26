@@ -87,8 +87,6 @@
       bs-manager
 
       zerotierone
-
-      android-tools
     ];
 
     xdg.portal = {
