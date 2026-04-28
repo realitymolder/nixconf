@@ -145,8 +145,8 @@
             }
             {
               key = "m";
-              desc = "Youtube Music";
-              cmd = "pear-desktop";
+              desc = "Spotify Music";
+              cmd = "spotify";
             }
             {
               key = "s";
