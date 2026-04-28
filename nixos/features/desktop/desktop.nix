@@ -18,7 +18,7 @@
     environment.sessionVariables = {};
 
     # preferences.autostart = [selfpkgs.quickshellWrapped];
-    preferences.autostart = [selfpkgs.noctalia-shell];
+    preferences.autostart = [selfpkgs.noctalia-shell]; # AUTO STARTS NOCTALIA SHELL
 
     environment.systemPackages = [
       selfpkgs.terminal
