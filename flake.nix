@@ -27,8 +27,13 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    waterfox-flake.url = "github:realitymolder/waterfox-flake";
-  };
+     waterfox-flake.url = "github:realitymolder/waterfox-flake";
+
+     llm-agents = {
+       url = "github:Qumulo/llm-agents";
+       inputs.nixpkgs.follows = "nixpkgs";
+     };
+   };
 
   # Import all .nix files from current directory except flake.nix recursively
   outputs = inputs: let

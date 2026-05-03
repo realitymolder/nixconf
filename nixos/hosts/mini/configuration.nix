@@ -19,7 +19,7 @@
       self.nixosModules.discord
       self.nixosModules.gimp
       self.nixosModules.telegram
-      self.nixosModules.youtube-music
+      # self.nixosModules.youtube-music
 
       self.nixosModules.gaming
 

@@ -14,7 +14,7 @@
       self.nixosModules.base
       self.nixosModules.general
       self.nixosModules.desktop
-
+      self.nixosModules.ai-editors
       # self.nixosModules.impermanence
 
       self.nixosModules.discord
