@@ -1,0 +1,156 @@
+{
+  inputs,
+  self,
+  ...
+}: {
+  flake.nixosConfigurations.samson = inputs.nixpkgs.lib.nixosSystem {
+    modules = [
+      self.nixosModules.hostSamson
+    ];
+  };
+
+  flake.nixosModules.hostSamson = {pkgs, ...}: {
+    imports = [
+      self.nixosModules.base
+      self.nixosModules.general
+      self.nixosModules.desktop
+
+      # self.nixosModules.impermanence
+
+      self.nixosModules.discord
+      self.nixosModules.gimp
+      self.nixosModules.telegram
+      self.nixosModules.migration-module
+      # self.nixosModules.youtube-music
+
+      self.nixosModules.gaming
+      # self.nixosModules.vr
+      # self.nixosModules.powersave
+
+      # disko
+      inputs.disko.nixosModules.disko
+      # fix a new disko config to represent samson disk etc.
+      # self.diskoConfigurations.hostSamson
+    ];
+
+    programs.corectrl.enable = true;
+
+    boot = {
+      kernelPackages = pkgs.linuxPackages_latest;
+
+      loader.grub.enable = true;
+      loader.grub.efiSupport = true;
+      loader.grub.efiInstallAsRemovable = true;
+      loader.grub.device = "nodev"; # support for EFI boot
+
+      supportedFilesystems.ntfs = true;
+
+      # kernelParams = ["quiet" "amd_pstate=guided" "processor.max_cstate=1"];
+      kernelParams = ["quiet"];
+      kernelModules = ["mt7921e" "coretemp" "cpuid" "v4l2loopback"];
+
+      binfmt.emulatedSystems = ["aarch64-linux"];
+    };
+
+    boot.plymouth.enable = true;
+
+    networking = {
+      hostName = "samson";
+      networkmanager.enable = true;
+    };
+
+    virtualisation.libvirtd.enable = true;
+    virtualisation.podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings = {
+        dns_enabled = true;
+      };
+    };
+
+    hardware.cpu.amd.updateMicrocode = true;
+
+    services = {
+      hardware.openrgb.enable = true;
+      flatpak.enable = true;
+      udisks2.enable = true;
+      printing.enable = true;
+    };
+
+    programs.alvr.enable = true;
+    programs.alvr.openFirewall = true;
+
+    environment.systemPackages = with pkgs; [
+      winetricks
+      glib
+
+      bs-manager
+
+      zerotierone
+    ];
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+      ];
+      config.niri = {
+        "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+        "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
+      };
+    };
+
+    environment.sessionVariables = {
+      XDG_CURRENT_DESKTOP = "niri";
+      XDG_SESSION_TYPE = "wayland";
+      XDG_SESSION_DESKTOP = "niri";
+    };
+
+    hardware.graphics.enable = true;
+
+    programs.niri.enable = true;
+
+    networking.firewall.enable = false;
+    programs.appimage.enable = true;
+    programs.appimage.binfmt = true;
+
+    services.xserver.videoDrivers = ["amdgpu"];
+    boot.initrd.kernelModules = ["amdgpu"];
+
+    programs.obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-move-transition
+      ];
+    };
+    persistance.cache.directories = [
+      ".config/obs-studio"
+    ];
+
+    # services.create_ap = {
+    #   enable = true;
+    #   settings = {
+    #     INTERNET_IFACE = "enp14s0";
+    #     WIFI_IFACE = "wlp15s0";
+    #     SSID = "TROJANVIRUS67";
+    #     PASSPHRASE = "yuriiyuriiyurii";
+
+    #     FREQ_BAND = "5"; # 5GHz
+    #     COUNTRY = "UA";
+    #     CHANNEL = "36"; # Channel 36
+    #     IEEE80211N = "1"; # WiFi 4
+    #     IEEE80211AC = "1"; # WiFi 5
+    #     IEEE80211AX = "1"; # WiFi 6 (HE)
+    #     HT_CAPAB = "[HT40+]"; # 40MHz
+    #   };
+    # };
+
+    # no conflicts
+    networking.networkmanager.unmanaged = ["wlp15s0"];
+    # speed
+    networking.firewall.allowedUDPPorts = [53 67];
+
+    system.stateVersion = "23.11";
+  };
+}
