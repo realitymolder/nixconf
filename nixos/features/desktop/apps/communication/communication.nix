@@ -3,7 +3,7 @@
  imports = [
    self.nixosModules.discord
    self.nixosModules.telegram
-
+   self.nixosModules.signal
  ];
   };
 }
