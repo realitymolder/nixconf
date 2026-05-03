@@ -4,13 +4,12 @@
   in {
     environment.systemPackages = [
       pkgs.spotify
-      pkgs.opencode
-      selfpkgs.pi-coding-agent
+      # pkgs.opencode
+      # selfpkgs.pi-coding-agent
       pkgs.anytype
       pkgs.zed-editor
       pkgs.vscode
-      pkgs.signal-desktop
-      pkgs.devbox
+      pkgs.devenv
       pkgs.pixman
     ];
 
