@@ -5,7 +5,7 @@
     ...
   }: {
     imports = [
-      self.nixosModules.extra_hjem
+      # self.nixosModules.extra_hjem
       self.nixosModules.gtk
       self.nixosModules.nix
     ];
@@ -17,6 +17,11 @@
       shell = self.packages.${pkgs.stdenv.hostPlatform.system}.environment;
 
       hashedPasswordFile = "/persist/passwd";
+    };
+
+    # Disable hjem to fix activation failure
+    systemd.services."hjem-activate@" = {
+      enable = false;
     };
 
     # persistance.data.directories = [

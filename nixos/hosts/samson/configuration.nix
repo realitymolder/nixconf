@@ -6,6 +6,15 @@
   flake.nixosConfigurations.samson = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       self.nixosModules.hostSamson
+      {
+        nixpkgs.overlays = [
+          (final: prev: {
+            openldap = prev.openldap.overrideAttrs (old: {
+              doCheck = false;
+            });
+          })
+        ];
+      }
     ];
   };
 
