@@ -26,9 +26,8 @@
       self.nixosModules.ai-editors
       # self.nixosModules.impermanence
 
-      self.nixosModules.discord
+      self.nixosModules.communication
       self.nixosModules.gimp
-      self.nixosModules.telegram
       self.nixosModules.migration-module
       # self.nixosModules.youtube-music
 
