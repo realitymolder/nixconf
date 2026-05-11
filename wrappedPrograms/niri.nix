@@ -126,7 +126,7 @@
             {
               key = "w";
               desc = "Wifi";
-              cmd = "${noctaliaExe} ipc call wifi togglePanel";
+              cmd = "${noctaliaExe} ipc call network togglePanel";
             }
             {
               key = "f";
