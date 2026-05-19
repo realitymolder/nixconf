@@ -24,7 +24,7 @@
       self.nixosModules.general
       self.nixosModules.desktop
       self.nixosModules.ai-editors
-      inputs.terax.nixosModules.terax
+      inputs.terax-ai.nixosModules.terax
       # self.nixosModules.impermanence
 
       self.nixosModules.communication
@@ -51,7 +51,7 @@
       loader.grub.efiSupport = true;
       loader.grub.efiInstallAsRemovable = true;
       loader.grub.device = "nodev"; # support for EFI boot
-
+      loader.grub.useOSProber = true; # Support windows apperntly
       supportedFilesystems.ntfs = true;
 
       # kernelParams = ["quiet" "amd_pstate=guided" "processor.max_cstate=1"];
