@@ -34,7 +34,10 @@
        inputs.nixpkgs.follows = "nixpkgs";
      };
 
-     terax.url = "path:./pkgs";
+     terax-ai = {
+       url = "github:realitymolder/terax-ai/nix-support";
+       inputs.nixpkgs.follows = "nixpkgs";
+     };
    };
 
   # Import all .nix files from current directory except flake.nix recursively
