@@ -18,12 +18,12 @@
     environment.sessionVariables = {};
 
     # preferences.autostart = [selfpkgs.quickshellWrapped];
-    preferences.autostart = [selfpkgs.noctalia-shell]; # AUTO STARTS NOCTALIA SHELL
+    preferences.autostart = [selfpkgs.dms];
 
     environment.systemPackages = [
       selfpkgs.terminal
       pkgs.pcmanfm
-      selfpkgs.noctalia-shell
+      selfpkgs.dms
     ];
 
     fonts.packages = with pkgs; [

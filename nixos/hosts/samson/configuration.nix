@@ -24,6 +24,7 @@
       self.nixosModules.general
       self.nixosModules.desktop
       self.nixosModules.ai-editors
+      inputs.terax.nixosModules.terax
       # self.nixosModules.impermanence
 
       self.nixosModules.communication
@@ -134,6 +135,7 @@
     };
     persistance.cache.directories = [
       ".config/obs-studio"
+      ".config/terax"
     ];
 
     # services.create_ap = {

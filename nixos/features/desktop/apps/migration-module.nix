@@ -6,7 +6,7 @@
       pkgs.spotify
       # pkgs.opencode
       # selfpkgs.pi-coding-agent
-      pkgs.anytype
+      # pkgs.anytype # moved to nix profile for now
       pkgs.zed-editor
       pkgs.vscode
       pkgs.devenv
