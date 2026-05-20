@@ -71,7 +71,7 @@
       XDG_CONFIG_HOME = "${placeholder config.outputName}";
     };
 
-    extraPackages =
+    runtimePkgs =
       [pkgs.quickshell]
       ++ lib.optional config.enableSystemMonitoring pkgs.dgop
       ++ lib.optionals config.enableVPN [

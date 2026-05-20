@@ -15,8 +15,7 @@
     };
     config = {
       settings = let
-        # startNoctaliaExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.start-noctalia-shell;
-        noctaliaExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.noctalia-shell;
+        dmsExe = lib.getExe self.packages.${config.pkgs.stdenv.hostPlatform.system}.dms;
       in {
         prefer-no-csd = null;
 
@@ -89,7 +88,7 @@
           "Mod+Shift+9".move-column-to-workspace = "w8";
           "Mod+Shift+0".move-column-to-workspace = "w9";
 
-          "Mod+S".spawn-sh = "${noctaliaExe} ipc call launcher toggle";
+          "Mod+S".spawn-sh = "${dmsExe} ipc launcher toggle";
           "Mod+V".spawn-sh = ''${config.pkgs.alsa-utils}/bin/amixer sset Capture toggle'';
 
           "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
@@ -121,12 +120,12 @@
             {
               key = "b";
               desc = "Bluetooth";
-              cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
+              cmd = "${dmsExe} ipc widget toggle controlCenterButton";
             }
             {
               key = "w";
               desc = "Wifi";
-              cmd = "${noctaliaExe} ipc call network togglePanel";
+              cmd = "${dmsExe} ipc widget toggle controlCenterButton";
             }
             {
               key = "f";
@@ -184,7 +183,9 @@
           lib.getExe config.pkgs.xwayland-satellite;
 
         spawn-at-startup = [
-          noctaliaExe
+          (lib.getExe (
+            pkgs.writeShellScriptBin "dms-autostart" "${dmsExe} run"
+          ))
           (lib.getExe (
             pkgs.writeShellScriptBin "wallpaper"
             "${lib.getExe pkgs.swaybg} -i ${self.wallpaper} -m fill"
